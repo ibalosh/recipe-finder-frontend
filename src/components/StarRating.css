@@ -1,0 +1,30 @@
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star {
+    font-size: 1.2rem;
+    color: #cdd320;
+    position: relative;
+    display: inline-block;
+}
+
+.star.empty {
+    color: #e0c07d30;
+}
+
+.star.half {
+    color: #e0c07d30; /* base for empty star */
+}
+
+.star.half::before {
+    content: '★';
+    color: #cdd320;
+    position: absolute;
+    left: 0;
+    width: 50%;
+    overflow: hidden;
+    display: inline-block;
+}
