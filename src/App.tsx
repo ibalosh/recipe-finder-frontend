@@ -1,13 +1,13 @@
 import './App.css'
 
 import Header from "./components/Header.tsx";
-import RecipeItem, {Recipe} from "./components/RecipeItem.tsx";
 import {useQuery} from "@tanstack/react-query";
 import {fetchRecipes} from "./utils/https.tsx";
 import {useState} from "react";
 import Pagination from "./components/Pagination.tsx";
 import RecipePlaceholder from "./components/RecipePlaceholder.tsx";
 import Footer from "./components/Footer.tsx";
+import RecipesItems from "./components/RecipesItems.tsx";
 
 function App() {
     const [searchTerm, setSearchTerm] = useState("");
@@ -26,43 +26,23 @@ function App() {
         setSearchTerm(searchString)
     }
 
-    const showPagination = data && data.pagination && data.pagination.total_count > 0
+    const hasPagination = data && data.pagination && data.pagination.total_count > 0
+    const noDataToShow = !isLoading && data?.recipes?.length === 0
+    const hasDataToShow = !isLoading && data?.recipes?.length > 0
 
     return (
     <>
         <Header handleSearchRecipes={handleSearchRecipes}/>
 
         <section className={isLoading ? 'loading' : ''}>
-            {isError &&
-              <ul id="recipes">
-                <RecipePlaceholder message="Something went wrong" />
-              </ul>
-            }
+            {isError && <RecipePlaceholder message="Something went wrong" />}
+            {isLoading && <RecipePlaceholder items={10}/>}
 
-            {isLoading && (
-                <ul id="recipes">
-                    {[...Array(10)].map((_, i) => (
-                        <RecipePlaceholder key={i} />
-                    ))}
-                </ul>
-            )}
-
-            {!isLoading && data?.recipes?.length === 0 && (
-                <ul id="recipes">
-                    <RecipePlaceholder message="No recipes found. Try a different search!" />
-                </ul>
-            )}
-
-            {!isLoading && data?.recipes?.length > 0 && (
-                <ul id="recipes">
-                    {data!.recipes.map((recipe: Recipe, index: number) => (
-                        <RecipeItem key={index} recipe={recipe} />
-                    ))}
-                </ul>
-            )}
+            {noDataToShow && <RecipePlaceholder message="No recipes found. Try a different search!" />}
+            {hasDataToShow && <RecipesItems data={data}/>}
         </section>
 
-        {showPagination && <Pagination
+        {hasPagination && <Pagination
             currentPage={data?.pagination.current_page}
             totalPages={data?.pagination.total_pages}
             totalCount={data?.pagination.total_count}
