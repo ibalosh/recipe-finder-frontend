@@ -93,11 +93,6 @@ nav button:hover {
   transition: opacity 0.3s ease-in-out;
 }
 
-.loading #recipes {
-  opacity: 0.3;
-  pointer-events: none;
-}
-
 #main-footer {
   text-align: center;
   padding: 1.5rem;

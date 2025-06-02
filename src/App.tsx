@@ -35,11 +35,10 @@ function App() {
     <>
         <Header handleSearchRecipes={handleSearchRecipes}/>
 
-        <section className={isLoading ? 'loading' : ''}>
+        <section>
             {isError && <RecipePlaceholder message={error.message} />}
-            {isLoading && <RecipePlaceholder items={10} message="Loading ..." />}
-
-            {noDataToShow && <RecipePlaceholder message="No recipes found. Try a different search!" />}
+            {isLoading && <RecipePlaceholder message="Loading ..." />}
+            {noDataToShow && <RecipePlaceholder message="No recipes found ..." />}
             {hasDataToShow && <RecipesItems data={data}/>}
         </section>
 

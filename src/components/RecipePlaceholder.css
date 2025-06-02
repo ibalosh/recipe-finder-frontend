@@ -1,3 +1,25 @@
+.recipe-placeholder-container {
+    position: relative;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.recipe-message {
+    position: absolute;
+    top: 5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    font-weight: 600;
+    font-family: 'Lato', 'Helvetica Neue', sans-serif;
+    color: #ff6b6b;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.2rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    z-index: 10;
+}
+
 .recipe-placeholder {
     display: flex;
     gap: 1rem;
@@ -5,7 +27,6 @@
     border-radius: 8px;
     background: #fffaf3;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1rem;
     min-height: 120px;
     align-items: center;
 }
@@ -40,12 +61,6 @@
 
 .line.long {
     width: 80%;
-}
-
-.no-data-message {
-    margin-top: 1rem;
-    font-style: italic;
-    color: #7a6d5d;
 }
 
 @keyframes pulse {
