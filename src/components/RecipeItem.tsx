@@ -36,7 +36,7 @@ export default function RecipeItem({recipe}: Props){
                                 { recipe.author ? `👩‍🍳 ${recipe.author}` : `👤 Deleted user`}
                             </span>
                         </div>
-                        <p className="recipe-item-rating"><StarRating rating={recipe.ratings} /></p>
+                        <div className="recipe-item-rating"><StarRating rating={recipe.ratings} /></div>
                     </div>
                 </div>
             </article>

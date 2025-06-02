@@ -16,7 +16,8 @@ function App() {
     const {
         data,
         isLoading,
-        isError
+        isError,
+        error
     } = useQuery({
         queryKey: ['recipes', searchTerm, page],
         queryFn: ({ signal }) => fetchRecipes({ searchTerm, page, signal }),
@@ -35,8 +36,8 @@ function App() {
         <Header handleSearchRecipes={handleSearchRecipes}/>
 
         <section className={isLoading ? 'loading' : ''}>
-            {isError && <RecipePlaceholder message="Something went wrong" />}
-            {isLoading && <RecipePlaceholder items={10}/>}
+            {isError && <RecipePlaceholder message={error.message} />}
+            {isLoading && <RecipePlaceholder items={10} message="Loading ..." />}
 
             {noDataToShow && <RecipePlaceholder message="No recipes found. Try a different search!" />}
             {hasDataToShow && <RecipesItems data={data}/>}
