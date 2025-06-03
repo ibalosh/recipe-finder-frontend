@@ -17,7 +17,7 @@ export default function Header({handleSearchRecipes}: Props) {
     return (
         <header id="main-header">
             <div id="header-title">
-                <h1>Recipe Finder</h1>
+                  <h1>Recipe Finder</h1>
             </div>
             <nav>
                 <input

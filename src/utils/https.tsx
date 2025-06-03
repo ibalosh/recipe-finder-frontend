@@ -1,12 +1,21 @@
-type Props = {
+import {QueryClient} from "@tanstack/react-query";
+
+export const queryClient = new QueryClient();
+
+type RecipesProps = {
     searchTerm: string,
     page: number,
     signal: AbortSignal
 }
 
+type RecipeProps = {
+    id: string
+    signal: AbortSignal
+}
+
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
-export async function fetchRecipes({ searchTerm, page, signal }: Props) {
+export async function fetchRecipes({ searchTerm, page, signal }: RecipesProps) {
     let url = `${apiUrl}/recipes`;
     url += '?search=' + searchTerm;
 
@@ -19,4 +28,15 @@ export async function fetchRecipes({ searchTerm, page, signal }: Props) {
 
     const { recipes, pagination} = await response.json();
     return { recipes, pagination };
+}
+
+export async function fetchRecipe({id, signal }: RecipeProps) {
+    const url = `${apiUrl}/recipes/${id}`;
+    console.log(url)
+
+    const response = await fetch(url, { signal: signal });
+    if (!response.ok) {
+        throw new Error("Failed to fetch recipe");
+    }
+    return response.json();
 }

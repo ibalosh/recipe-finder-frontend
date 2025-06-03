@@ -1,0 +1,51 @@
+import './App.css'
+
+import Footer from "./components/Footer.tsx";
+import {useParams} from "react-router-dom";
+import {useQuery} from "@tanstack/react-query";
+import RecipePlaceholder from "./components/RecipePlaceholder.tsx";
+import {fetchRecipe} from "./utils/https.tsx";
+
+export default function RecipeDetail() {
+    const params = useParams();
+
+    const {
+        data: recipe,
+        isLoading,
+        isError,
+        error,
+    } = useQuery({
+        queryKey: ["recipe", { id: params.id}],
+        queryFn: ({ signal }) => fetchRecipe({ id: params.id!, signal}),
+        enabled: !!params.id,
+    });
+
+    if (isLoading) return <RecipePlaceholder message="Loading recipe..." />;
+    if (isError || !recipe) return <RecipePlaceholder message={error?.message || "Recipe not found."} />;
+
+    return (
+        <>
+            <section>
+                <h2>{recipe.title}</h2>
+                {recipe.image && (
+                    <img src={recipe.image} alt={recipe.title} style={{ maxWidth: "400px", borderRadius: "8px" }} />
+                )}
+
+                <p><strong>Author:</strong> {recipe.author || "Unknown"}</p>
+                <p><strong>Category:</strong> {recipe.category || "Uncategorized"}</p>
+                <p><strong>Cuisine:</strong> {recipe.cuisine || "N/A"}</p>
+                <p><strong>Rating:</strong> {recipe.ratings}</p>
+                <p><strong>Prep Time:</strong> {recipe.prep_time} min</p>
+                <p><strong>Cook Time:</strong> {recipe.cook_time} min</p>
+
+                <h4>Ingredients</h4>
+                <ul>
+                    {recipe.ingredients.map((ingredient: string, index: number) => (
+                        <li key={index}>{ingredient}</li>
+                    ))}
+                </ul>
+            </section>
+            <Footer />
+        </>
+    );
+}
