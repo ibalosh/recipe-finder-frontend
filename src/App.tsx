@@ -25,6 +25,7 @@ function App() {
 
     function handleSearchRecipes(searchString: string) {
         setSearchTerm(searchString)
+        setPage(1)
     }
 
     const hasPagination = data && data.pagination && data.pagination.total_count > 0

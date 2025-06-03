@@ -7,9 +7,8 @@ type Props = {
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 
 export async function fetchRecipes({ searchTerm, page, signal }: Props) {
-    console.log(import.meta.env)
     let url = `${apiUrl}/recipes`;
-    url += '?q=' + searchTerm;
+    url += '?search=' + searchTerm;
 
     const response = await fetch(`${url}&page=${page}`, { signal: signal });
 
