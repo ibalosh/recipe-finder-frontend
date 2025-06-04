@@ -1,54 +1,49 @@
-# React + TypeScript + Vite
+# 🥘 Recipe Time — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight React frontend for the Recipe Finder API, allowing users to search for recipes based on the ingredients they have at home.
 
-Currently, two official plugins are available:
+🌐 **Live Demo**: [recipe-time-frontend.onrender.com](https://recipe-time-frontend.onrender.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 💡 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔍 **Ingredient Search**: Type in one or more ingredients (e.g. `eggs milk`) to search for recipes that best match your input.
+- ⏳ **Loading Feedback**: Gradual UI feedback while data is loading, ensuring smooth user experience.
+- ❌ **Graceful Error Handling**: Displays informative messages when no data is found or if the API is unreachable.
+- 📄 **Pagination**: Paginated results with clear navigation between pages.
+- ⚡ **TanStack Query**:
+    - Handles data fetching, caching, and error/loading states.
+    - Efficiently manages repeated requests to prevent unnecessary API calls.
+- 🧭 **React Router**:
+    - Basic routing setup using `react-router-dom`
+    - Supports detail pages for individual recipes via routes like `/recipe/:id`
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🚀 Tech Stack
+
+- [React](https://reactjs.org/)
+- [TanStack Query (React Query)](https://tanstack.com/query/latest)
+- [React Router DOM](https://reactrouter.com/)
+- Fetches data from [Recipe Finder Backend - Rails API](https://github.com/ibalosh/recipe_time)
+
+---
+
+## 🛠 Development
+
+To run locally:
+
+```bash
+npm install
+npm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Ensure your `.env` file contains the API URL and token.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```env
+VITE_API_BASE_URL=http://example.com
+VITE_API_TOKEN=token
 ```
+You can see an example in `.env.example` file.
+
