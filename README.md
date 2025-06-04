@@ -1,5 +1,9 @@
 # 🥘 Recipe Finder — Frontend
 
+Task on hand: It's dinner time! Create an application that helps users find the most relevant recipes that they can prepare with the ingredients that they have at home
+
+---
+
 A lightweight React frontend for the Recipe Finder API, allowing users to search for recipes based on the ingredients they have at home.
 
 🌐 **Live Demo**: [recipe-time-frontend.onrender.com](https://recipe-time-frontend.onrender.com)
