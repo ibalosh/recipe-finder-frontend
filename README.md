@@ -4,6 +4,8 @@ A lightweight React frontend for the Recipe Finder API, allowing users to search
 
 🌐 **Live Demo**: [recipe-time-frontend.onrender.com](https://recipe-time-frontend.onrender.com)
 
+![App Screenshot](./main.jpg)
+
 ---
 
 ## 💡 Features
