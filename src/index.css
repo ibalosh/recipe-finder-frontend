@@ -9,74 +9,9 @@ body {
   font-family: 'Lato', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(#f6f6ec, #f1e1c4);
+  background: linear-gradient(#f6f6ec, #d6cd9f);
   color: #a86539;
   min-height: 100vh;
-}
-
-#main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background-color: #fffdf5;
-  border-bottom: 2px solid #d4c79d;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-#header-title {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-#header-title h1 {
-  font-family: 'Lobster Two', 'Segoe UI', 'Helvetica Neue', sans-serif;
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin: 0;
-  color: #d4783a;
-  letter-spacing: 0.2rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 40rem;
-  width: 100%;
-}
-
-nav input {
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-right: none;
-  border-radius: 4px 0 0 4px;
-  outline: none;
-  flex: 1;
-}
-
-nav button {
-  padding: 0.7rem 1rem;
-  font-size: 1rem;
-  background-color: #baa372;
-  color: white;
-  border: 1px solid #ccc;
-  border-left: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-nav button:hover {
-  background-color: #938f65;
 }
 
 

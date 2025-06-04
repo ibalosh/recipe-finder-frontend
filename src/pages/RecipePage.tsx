@@ -6,7 +6,7 @@ import {useQuery} from "@tanstack/react-query";
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
 import {fetchRecipe} from "../utils/https.tsx";
 
-export interface RecipeDetails {
+export interface RecipePage {
     title: string
     category: {
         id: number,

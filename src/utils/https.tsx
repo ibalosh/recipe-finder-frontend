@@ -1,5 +1,5 @@
 import {QueryClient} from "@tanstack/react-query";
-import {RecipeDetails} from "../pages/RecipeDetails.tsx";
+import {RecipePage} from "../pages/RecipePage.tsx";
 
 export const queryClient = new QueryClient();
 
@@ -33,7 +33,7 @@ export async function fetchRecipes({ searchTerm, page, signal }: RecipesProps) {
     return { recipes, pagination };
 }
 
-export async function fetchRecipe({id, signal }: RecipeProps): Promise<RecipeDetails> {
+export async function fetchRecipe({id, signal }: RecipeProps): Promise<RecipePage> {
     const url = `${apiUrl}/recipes/${id}`;
     console.log(url)
 

@@ -1,41 +1,32 @@
 import '../App.css'
 
-import Header from "../components/Header.tsx";
+import {useSearchParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import {fetchRecipes} from "../utils/https.tsx";
 import {useState} from "react";
+
+import {fetchRecipes} from "../utils/https.tsx";
+
+import Footer from "../components/Footer.tsx";
 import Pagination from "../components/Pagination.tsx";
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
-import Footer from "../components/Footer.tsx";
 import RecipesItems from "../components/RecipesItems.tsx";
 
-export default function Home() {
-    const [searchTerm, setSearchTerm] = useState("");
+export default function HomePage() {
+    const [searchParams] = useSearchParams();
+    const searchTerm = searchParams.get("search") || "";
     const [page, setPage] = useState(1);
 
-    const {
-        data,
-        isLoading,
-        isError,
-        error
-    } = useQuery({
+    const { data, isLoading, isError, error} = useQuery({
         queryKey: ['recipes', searchTerm, page],
         queryFn: ({ signal }) => fetchRecipes({ searchTerm, page, signal }),
     });
-
-    function handleSearchRecipes(searchString: string) {
-        setSearchTerm(searchString)
-        setPage(1)
-    }
 
     const hasPagination = data && data.pagination && data.pagination.total_count > 0
     const noDataToShow = !isLoading && data?.recipes?.length === 0
     const hasDataToShow = !isLoading && data?.recipes?.length > 0
 
     return (
-    <>
-        <Header handleSearchRecipes={handleSearchRecipes}/>
-
+    <main>
         <section>
             {isError && <RecipePlaceholder message={error.message} />}
             {isLoading && <RecipePlaceholder message="Loading ..." />}
@@ -52,6 +43,6 @@ export default function Home() {
             setPage={setPage}
         />}
         <Footer />
-    </>
+    </main>
   )
 }
