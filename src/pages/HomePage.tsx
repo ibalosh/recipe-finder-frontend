@@ -2,7 +2,7 @@ import '../App.css'
 
 import {useSearchParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import {fetchRecipes} from "../utils/https.tsx";
 
@@ -23,6 +23,13 @@ export default function HomePage() {
     const hasPagination = data && data.pagination && data.pagination.total_count > 0
     const noDataToShow = !isLoading && data?.recipes?.length === 0
     const hasDataToShow = !isLoading && (data?.recipes?.length ?? 0) > 0
+
+    // page should reset to first one, when visiting home page from another page
+    // like when clicking recipe finder logo
+    useEffect(() => {
+        const pageParam = parseInt(searchParams.get('page') || '1', 10);
+        setPage(isNaN(pageParam) ? 1 : pageParam);
+    }, [searchParams]);
 
     return (
     <>
