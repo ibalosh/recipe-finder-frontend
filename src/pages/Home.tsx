@@ -1,13 +1,13 @@
-import './App.css'
+import '../App.css'
 
-import Header from "./components/Header.tsx";
+import Header from "../components/Header.tsx";
 import {useQuery} from "@tanstack/react-query";
-import {fetchRecipes} from "./utils/https.tsx";
+import {fetchRecipes} from "../utils/https.tsx";
 import {useState} from "react";
-import Pagination from "./components/Pagination.tsx";
-import RecipePlaceholder from "./components/RecipePlaceholder.tsx";
-import Footer from "./components/Footer.tsx";
-import RecipesItems from "./components/RecipesItems.tsx";
+import Pagination from "../components/Pagination.tsx";
+import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
+import Footer from "../components/Footer.tsx";
+import RecipesItems from "../components/RecipesItems.tsx";
 
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState("");

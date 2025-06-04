@@ -2,8 +2,8 @@ import './App.css'
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {QueryClientProvider} from "@tanstack/react-query";
 import {queryClient} from "./utils/https.tsx";
-import Home from "./Home.tsx";
-import RecipeDetails from "./RecipeDetails.tsx";
+import Home from "./pages/Home.tsx";
+import RecipeDetails from "./pages/RecipeDetails.tsx";
 
 const router = createBrowserRouter([
     {

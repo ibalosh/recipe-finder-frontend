@@ -8,8 +8,14 @@ type Props = {
 
 export interface Recipe {
     title: string
-    category: string
-    author: string
+    category: {
+        id: number,
+        name: string
+    }
+    author: {
+        id: number
+        name: string
+    }
     image_url: string
     ratings: number
 }
@@ -31,9 +37,9 @@ export default function RecipeItem({recipe}: Props){
                     <div className="recipe-item-details">
                         <h3 className="recipe-item-title">{recipe.title}</h3>
                         <div className="recipe-meta">
-                            <span className="recipe-tag category">🍽 {recipe.category}</span>
+                            <span className="recipe-tag category">🍽 {recipe.category.name}</span>
                             <span className="recipe-tag author">
-                                { recipe.author ? `👩‍🍳 ${recipe.author}` : `👤 Deleted user`}
+                                { recipe.author ? `👩‍🍳 ${recipe.author.name}` : `👤 Deleted user`}
                             </span>
                         </div>
                         <div className="recipe-item-rating"><StarRating rating={recipe.ratings} /></div>
