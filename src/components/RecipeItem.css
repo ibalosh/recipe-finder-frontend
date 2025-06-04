@@ -6,6 +6,7 @@
     text-align: center;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .recipe-item:hover {

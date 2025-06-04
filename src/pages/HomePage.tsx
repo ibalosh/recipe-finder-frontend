@@ -6,7 +6,6 @@ import {useState} from "react";
 
 import {fetchRecipes} from "../utils/https.tsx";
 
-import Footer from "../components/Footer.tsx";
 import Pagination from "../components/Pagination.tsx";
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
 import RecipesItems from "../components/RecipesItems.tsx";
@@ -23,10 +22,10 @@ export default function HomePage() {
 
     const hasPagination = data && data.pagination && data.pagination.total_count > 0
     const noDataToShow = !isLoading && data?.recipes?.length === 0
-    const hasDataToShow = !isLoading && data?.recipes?.length > 0
+    const hasDataToShow = !isLoading && (data?.recipes?.length ?? 0) > 0
 
     return (
-    <main>
+    <>
         <section>
             {isError && <RecipePlaceholder message={error.message} />}
             {isLoading && <RecipePlaceholder message="Loading ..." />}
@@ -42,7 +41,6 @@ export default function HomePage() {
             prevPage={data?.pagination.prev_page}
             setPage={setPage}
         />}
-        <Footer />
-    </main>
+    </>
   )
 }

@@ -1,30 +1,24 @@
 import "./RecipeItem.css";
 import {useState} from "react";
 import StarRating from "./StarRating.tsx";
+import {useNavigate} from "react-router-dom";
+import {Recipe} from "../utils/https.tsx";
 
 type Props = {
     recipe: Recipe
 }
 
-export interface Recipe {
-    title: string
-    category: {
-        id: number,
-        name: string
-    }
-    author: {
-        id: number
-        name: string
-    }
-    image_url: string
-    ratings: number
-}
-
 export default function RecipeItem({recipe}: Props){
     const [loaded, setLoaded] = useState(false);
+    const navigate = useNavigate();
+
+    function hey() {
+        navigate(`/recipes/${recipe.id}`)
+    }
+
 
     return (
-        <li className="recipe-item">
+        <li className="recipe-item" onClick={hey}>
             <article>
                 <div className={`image-wrapper ${loaded ? 'loaded' : 'loading'}`}>
                     <img

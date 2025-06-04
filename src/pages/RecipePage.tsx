@@ -1,33 +1,13 @@
 import '../App.css'
 
-import Footer from "../components/Footer.tsx";
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
-import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
+
 import {fetchRecipe} from "../utils/https.tsx";
 
-export interface RecipePage {
-    title: string
-    category: {
-        id: number,
-        name: string
-    }
-    author: {
-        id: number
-        name: string
-    },
-    cuisine: {
-        id: number,
-        name: string
-    }
-    image_url: string
-    ratings: number,
-    cook_time: number,
-    prep_time: number,
-    ingredients: string[]
-}
+import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
 
-export default function RecipeDetail() {
+export default function RecipePage() {
     const params = useParams();
 
     const {
@@ -58,6 +38,8 @@ export default function RecipeDetail() {
                 <p><strong>Rating:</strong> {recipe.ratings}</p>
                 <p><strong>Prep Time:</strong> {recipe.prep_time} min</p>
                 <p><strong>Cook Time:</strong> {recipe.cook_time} min</p>
+                <p><strong>Description:</strong> {recipe.short_description}</p>
+                <p><strong>Instructions:</strong> {recipe.instructions}</p>
 
                 <h4>Ingredients</h4>
                 <ul>
@@ -66,7 +48,6 @@ export default function RecipeDetail() {
                     ))}
                 </ul>
             </section>
-            <Footer />
         </>
     );
 }

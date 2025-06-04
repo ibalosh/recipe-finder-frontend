@@ -1,9 +1,5 @@
-import RecipeItem, {Recipe} from "./RecipeItem.tsx";
-
-interface Recipes {
-    recipes: Recipe[];
-    pagination: object;
-}
+import {Recipe, Recipes} from "../utils/https.tsx";
+import RecipeItem from "./RecipeItem.tsx";
 
 type Props = {
     data: Recipes | undefined;
