@@ -25,10 +25,10 @@ export default function Pagination(
             <button onClick={() => prevPage && setPage(prevPage)} disabled={!prevPage}>← Prev</button>
 
             <span className="pagination-info">
-  Page <strong>{currentPage}</strong> of {totalPages}
+                Page <strong>{currentPage}</strong> of {totalPages}
                 <span className="dot">•</span>
-  <span className="total-count">{totalCount.toLocaleString()} recipes</span>
-</span>
+                <span className="total-count">{totalCount.toLocaleString()} recipes</span>
+            </span>
 
             <button onClick={() => nextPage && setPage(nextPage)} disabled={!nextPage}>Next →</button>
             <button onClick={() => setPage(totalPages)} disabled={currentPage === totalPages}>Last »</button>

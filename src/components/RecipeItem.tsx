@@ -16,7 +16,6 @@ export default function RecipeItem({recipe}: Props){
         navigate(`/recipes/${recipe.id}`)
     }
 
-
     return (
         <li className="recipe-item" onClick={hey}>
             <article>

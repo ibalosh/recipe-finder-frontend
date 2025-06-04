@@ -6,6 +6,9 @@ import {useQuery} from "@tanstack/react-query";
 import {fetchRecipe} from "../utils/https.tsx";
 
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
+import StarRating from "../components/StarRating.tsx";
+
+import "./RecipeDetails.css"
 
 export default function RecipePage() {
     const params = useParams();
@@ -25,29 +28,47 @@ export default function RecipePage() {
     if (isError || !recipe) return <RecipePlaceholder message={error?.message || "Recipe not found."} />;
 
     return (
-        <>
-            <section>
-                <h2>{recipe.title}</h2>
-                {recipe.image_url && (
-                    <img src={recipe.image_url} alt={recipe.title} style={{ maxWidth: "400px", borderRadius: "8px" }} />
-                )}
+        <div className="recipe-container">
+            <h1 className="recipe-heading">{recipe.title}</h1>
 
-                <p><strong>Author:</strong> {recipe.author?.name || "Unknown"}</p>
-                <p><strong>Category:</strong> {recipe.category?.name || "Uncategorized"}</p>
-                <p><strong>Cuisine:</strong> {recipe.cuisine?.name || "N/A"}</p>
-                <p><strong>Rating:</strong> {recipe.ratings}</p>
-                <p><strong>Prep Time:</strong> {recipe.prep_time} min</p>
-                <p><strong>Cook Time:</strong> {recipe.cook_time} min</p>
-                <p><strong>Description:</strong> {recipe.short_description}</p>
-                <p><strong>Instructions:</strong> {recipe.instructions}</p>
+            {recipe.short_description && (
+                <p className="recipe-description">{recipe.short_description}</p>
+            )}
 
-                <h4>Ingredients</h4>
-                <ul>
-                    {recipe.ingredients.map((ingredient: string, index: number) => (
-                        <li key={index}>{ingredient}</li>
+            <div className="recipe-meta">
+                <div className="recipe-meta-item">👩‍🍳 {recipe.author?.name || 'Anonymous'}</div>
+                <div className="recipe-meta-item">🍽 {recipe.category?.name || 'Uncategorized'}</div>
+                <div className="recipe-meta-item">🌍 {recipe.cuisine?.name || 'Various'}</div>
+            </div>
+
+            {recipe.image_url && (
+                <img
+                    src={recipe.image_url}
+                    alt={recipe.title}
+                    className="recipe-image"
+                />
+            )}
+
+            <div className="recipe-section">
+                <h2 className="recipe-section-title">📝 Ingredients</h2>
+                <ul className="recipe-ingredients">
+                    {recipe.ingredients.map((item, i) => (
+                        <li key={i}>{item}</li>
                     ))}
                 </ul>
-            </section>
-        </>
+            </div>
+
+            {recipe.instructions && (
+                <div className="recipe-section">
+                    <h2 className="recipe-section-title">👨‍🍳 Instructions</h2>
+                    <p className="recipe-instructions">{recipe.instructions}</p>
+                </div>
+            )}
+
+            <div className="recipe-footer">
+                <span>⏱ Preparation time: {recipe.prep_time} min | Cook time: {recipe.cook_time} min</span>
+                <StarRating rating={recipe.ratings} />
+            </div>
+        </div>
     );
 }
