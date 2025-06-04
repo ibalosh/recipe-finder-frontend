@@ -1,4 +1,4 @@
-# 🥘 Recipe Time — Frontend
+# 🥘 Recipe Finder — Frontend
 
 A lightweight React frontend for the Recipe Finder API, allowing users to search for recipes based on the ingredients they have at home.
 
