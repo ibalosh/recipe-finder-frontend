@@ -17,7 +17,7 @@ A lightweight React frontend for the Recipe Finder API, allowing users to search
     - Efficiently manages repeated requests to prevent unnecessary API calls.
 - 🧭 **React Router**:
     - Basic routing setup using `react-router-dom`
-    - Supports detail pages for individual recipes via routes like `/recipe/:id`
+    - Supports detail pages for individual recipes via routes like `/recipes/:id`
 
 ---
 
