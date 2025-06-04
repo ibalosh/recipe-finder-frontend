@@ -4,6 +4,8 @@ A lightweight React frontend for the Recipe Finder API, allowing users to search
 
 🌐 **Live Demo**: [recipe-time-frontend.onrender.com](https://recipe-time-frontend.onrender.com)
 
+💻 **Backend repo**: [github.com/ibalosh/recipe_finder_backend](https://github.com/ibalosh/recipe_finder_backend)
+
 ![App Screenshot](./main.jpg)
 
 ---
