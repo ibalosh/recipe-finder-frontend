@@ -1,5 +1,6 @@
 import {Recipe, Recipes} from "../utils/https.tsx";
 import RecipeItem from "./RecipeItem.tsx";
+import "./RecipeItem.css"
 
 type Props = {
     data: Recipes | undefined;

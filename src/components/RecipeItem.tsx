@@ -16,10 +16,14 @@ export default function RecipeItem({recipe}: Props){
         navigate(`/recipes/${recipe.id}`)
     }
 
-    function formattedIngredients(ingredients: string[]) {
-        return ingredients.join(', ').
-            slice(0, 50) + (recipe.ingredients.join(', ').
-            length > 100 ? '...' : '')
+    function limitTextByLength(textToLimit: string, limit: number) {
+        let result = textToLimit;
+
+        if (textToLimit.length > limit) {
+            result = textToLimit.slice(0,limit) + "..."
+        }
+
+        return result;
     }
 
     return (
@@ -34,9 +38,11 @@ export default function RecipeItem({recipe}: Props){
                 </div>
 
                 <div className="recipe-item-details">
-                    <h3 className="recipe-item-title">{recipe.title}</h3>
+                    <h3 className="recipe-item-title">{limitTextByLength(recipe.title,30) }</h3>
                     <div className="recipe-meta">
-                        <div className="recipe-ingredients-text">{formattedIngredients(recipe.ingredients)}</div>
+                        <div className="recipe-ingredients-text">
+                            {limitTextByLength(recipe.ingredients.join(", "), 50)}
+                        </div>
                         <span className="recipe-tag category">🍽 {recipe.category.name}</span>
                         <span className="recipe-tag author">
                         { recipe.author ? `👩‍🍳 ${recipe.author.name}` : `👤 Deleted user`}
