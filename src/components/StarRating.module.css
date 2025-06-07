@@ -16,7 +16,7 @@
 }
 
 .star.half {
-    color: #e0c07d30; /* base for empty star */
+    color: #e0c07d30;
 }
 
 .star.half::before {
