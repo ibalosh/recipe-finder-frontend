@@ -14,13 +14,13 @@
     border-radius: 1rem;
     overflow: hidden;
     text-align: center;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease;
     cursor: pointer;
 }
 
 .recipe-item:hover {
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
 }
 
 .recipe-item img {

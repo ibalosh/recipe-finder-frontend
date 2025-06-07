@@ -37,7 +37,7 @@ export default function HomePage() {
             {isError && <RecipePlaceholder message={error.message} />}
             {isLoading && <RecipePlaceholder message="Loading ..." />}
             {noDataToShow && <RecipePlaceholder message="No recipes found ..." />}
-            {hasDataToShow && <RecipesItems data={data}/>}
+            {hasDataToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
         </section>
 
         {hasPagination && <Pagination

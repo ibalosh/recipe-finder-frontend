@@ -1,14 +1,18 @@
+import pluralize from 'pluralize';
+
 import "./RecipeItem.css";
 import {useState} from "react";
 import StarRating from "./StarRating.tsx";
 import {useNavigate} from "react-router-dom";
 import {Recipe} from "../utils/https.tsx";
+import * as React from "react";
 
 type Props = {
-    recipe: Recipe
+    recipe: Recipe,
+    searchTerm: string
 }
 
-export default function RecipeItem({recipe}: Props){
+export default function RecipeItem({recipe, searchTerm}: Props){
     const [loaded, setLoaded] = useState(false);
     const navigate = useNavigate();
 
@@ -26,6 +30,30 @@ export default function RecipeItem({recipe}: Props){
         return result;
     }
 
+
+    /**
+     * Given a string `text` and a comma-/space-separated `searchTerm`,
+     * bolds each whole-word occurrence (singular or plural) of any term.
+     */
+    function highlightTerms(text: string, searchTerm: string): React.ReactNode[] {
+        // 1) split into words, lowercase and dedupe
+        const baseWords = Array.from(new Set(searchTerm.toLowerCase().split(/\W+/).filter(Boolean)));
+        if (!baseWords.length) return [text];
+
+        // 2) expand each into [singular, plural], dedupe
+        const words = Array.from(new Set(
+            baseWords.flatMap(w => [ pluralize.singular(w), pluralize.plural(w) ])
+        ));
+
+        // 3) build /\b(word1|word2|...)\b/gi
+        const re = new RegExp(`\\b(${words.join('|')})\\b`, 'gi');
+
+        // 4) split on that, wrapping matches in <strong>
+        return text.split(re).map((chunk, i) =>
+            re.test(chunk) ? <strong key={i}>{chunk}</strong> : chunk
+        );
+    }
+
     return (
         <li className="recipe-item" onClick={visitRecipePage}>
             <article>
@@ -41,7 +69,11 @@ export default function RecipeItem({recipe}: Props){
                     <h3 className="recipe-item-title">{limitTextByLength(recipe.title,30) }</h3>
                     <div className="recipe-meta">
                         <div className="recipe-ingredients-text">
-                            {limitTextByLength(recipe.ingredients.join(", "), 50)}
+                            {highlightTerms(
+                                limitTextByLength(recipe.ingredients.join(", "),
+                                    50
+                                ), searchTerm
+                            )}
                         </div>
                         <span className="recipe-tag category">🍽 {recipe.category.name}</span>
                         <span className="recipe-tag author">

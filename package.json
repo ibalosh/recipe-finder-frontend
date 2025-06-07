@@ -11,11 +11,13 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.77.2",
+    "pluralize": "^8.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.6.1"
   },
   "devDependencies": {
+    "@types/pluralize": "^0.0.33",
     "@eslint/js": "^9.21.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
