@@ -55,7 +55,7 @@ export async function fetchRecipes({ searchTerm, page, signal }: RecipesSearchPr
     let url = `${apiUrl}/recipes`;
     url += '?search=' + searchTerm;
 
-    const response = await fetch(`${url}&page=${page}`,
+    const response = await fetch(`${url}&page=${page}&per_page=8`,
         { signal: signal , headers: authHeaders });
 
     if (!response.ok) {
