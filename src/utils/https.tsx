@@ -5,6 +5,7 @@ export const queryClient = new QueryClient();
 type RecipesSearchProps = {
     searchTerm: string,
     page: number,
+    mode: string,
     signal: AbortSignal
 }
 
@@ -51,9 +52,10 @@ export interface Recipe {
 const apiUrl = import.meta.env.VITE_API_BASE_URL;
 const authHeaders = { "X-API-Token": import.meta.env.VITE_API_TOKEN }
 
-export async function fetchRecipes({ searchTerm, page, signal }: RecipesSearchProps): Promise<Recipes> {
+export async function fetchRecipes({ searchTerm, page, mode, signal }: RecipesSearchProps): Promise<Recipes> {
     let url = `${apiUrl}/recipes`;
     url += '?search=' + searchTerm;
+    url += '&mode=' + mode
 
     const response = await fetch(`${url}&page=${page}&per_page=8`,
         { signal: signal , headers: authHeaders });

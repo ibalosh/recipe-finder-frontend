@@ -4,15 +4,17 @@ import "./Header.css"
 
 export default function Header() {
     const [searchFieldValue, setSearchFieldValue] = useState("")
+    const [searchMode, setSearchMode] = useState<"ingredients" | "title">("ingredients");
     const navigate = useNavigate();
 
     function submitSearch() {
-        navigate(`/?search=${encodeURIComponent(searchFieldValue)}`);
+        navigate(`/?search=${encodeURIComponent(searchFieldValue)}&mode=${searchMode}`);
     }
 
     function resetSearch() {
-        setSearchFieldValue("")
-        navigate("/")
+        setSearchFieldValue("");
+        setSearchMode("ingredients");
+        navigate("/");
     }
 
     // clicking enter while on page will auto initiate a search
@@ -22,16 +24,38 @@ export default function Header() {
         }
     }
 
+    const placeholderValue = (searchMode === "ingredients") ? "Search for recipes by ingredients..." : "Search for recipes by title..."
+
     return (
         <header id="main-header">
             <button id="header-title" onClick={resetSearch} className="logo">
-                  <h1>Recipe Finder</h1>
+                <h1>Recipe Finder</h1>
             </button>
+            <div className="search-toggle">
+                <label>
+                    <input
+                        type="radio"
+                        value="ingredients"
+                        checked={searchMode === "ingredients"}
+                        onChange={() => setSearchMode("ingredients")}
+                    />
+                    Ingredients
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        value="title"
+                        checked={searchMode === "title"}
+                        onChange={() => setSearchMode("title")}
+                    />
+                    Title
+                </label>
+            </div>
             <nav>
                 <input
                     type="text"
                     value={searchFieldValue}
-                    placeholder="Search for recipes by ingredients..."
+                    placeholder={placeholderValue}
                     onChange={(event) => setSearchFieldValue(event.target.value)}
                     onKeyDown={handleKeyDown}
                 />

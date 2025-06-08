@@ -13,11 +13,12 @@ import RecipesItems from "../components/RecipesItems.tsx";
 export default function HomePage() {
     const [searchParams] = useSearchParams();
     const searchTerm = searchParams.get("search") || "";
+    const mode = searchParams.get("mode") || "";
     const [page, setPage] = useState(1);
 
     const { data, isLoading, isError, error} = useQuery({
-        queryKey: ['recipes', searchTerm, page],
-        queryFn: ({ signal }) => fetchRecipes({ searchTerm, page, signal }),
+        queryKey: ['recipes', searchTerm, mode, page],
+        queryFn: ({ signal }) => fetchRecipes({ searchTerm, page, mode, signal }),
     });
 
     const hasPagination = data && data.pagination && data.pagination.total_count > 0
