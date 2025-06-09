@@ -100,6 +100,10 @@ nav button:hover {
     margin: 0;
 }
 
+.search-toggle label:has(input[type="radio"]:checked) {
+    background-color: #f3cfa5;
+}
+
 .search-toggle label:hover {
     background-color: #f1d6b9;
 }
