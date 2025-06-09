@@ -5,6 +5,7 @@ import {queryClient} from "./utils/https.tsx";
 import HomePage from "./pages/HomePage.tsx";
 import RecipeDetails from "./pages/RecipePage.tsx";
 import RootLayout from "./pages/Root.tsx";
+import RouteError from "./components/RouteError.tsx";
 
 /**
  * Routing plan for the pages
@@ -13,14 +14,17 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <RootLayout />,
+        errorElement: <RouteError />,
         children: [
             {
                 index: true,
                 element: <HomePage />,
+                errorElement: <RouteError />
             },
             {
                 path: '/recipes/:id',
-                element: <RecipeDetails />
+                element: <RecipeDetails />,
+                errorElement: <RouteError />
             },
         ]
     }

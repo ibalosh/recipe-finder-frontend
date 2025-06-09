@@ -75,7 +75,7 @@ export default function RecipeItem({recipe, searchTerm}: Props){
                                 ), searchTerm
                             )}
                         </div>
-                        <span className="recipe-tag category">🍽 {recipe.category.name}</span>
+                        <span className="recipe-tag category">🍽 {recipe.category?.name}</span>
                         <span className="recipe-tag author">
                         { recipe.author ? `👩‍🍳 ${recipe.author.name}` : `👤 Deleted user`}
                     </span>

@@ -1,0 +1,14 @@
+.route-error {
+    padding: 2rem;
+    background-color: #ffe6e6;
+    border: 1px solid #ffcccc;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 4rem auto;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.route-error h2 {
+    color: #cc0000;
+}
