@@ -1,18 +1,8 @@
-.star-rating {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
 .star {
     font-size: 1.2rem;
     color: #cdd320;
     position: relative;
     display: inline-block;
-}
-
-.star.empty {
-    color: #e0c07d30;
 }
 
 .star.half {

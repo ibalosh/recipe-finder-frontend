@@ -47,7 +47,7 @@
     font-size: 1.2rem;
 }
 
-.total-count {
+.pagination-info .total-count {
     font-style: italic;
     color: #7d6751;
 }
