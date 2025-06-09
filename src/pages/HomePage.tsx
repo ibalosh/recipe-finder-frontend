@@ -18,7 +18,9 @@ export default function HomePage() {
 
     const { data, isLoading, isError, error} = useQuery({
         queryKey: ['recipes', searchTerm, mode, page],
-        queryFn: ({ signal }) => fetchRecipes({ searchTerm, page, mode, signal }),
+        queryFn: ({ signal }) => fetchRecipes(
+            { searchTerm, page, mode, signal }
+        ),
     });
 
     const hasPagination = data && data.pagination && data.pagination.total_count > 0

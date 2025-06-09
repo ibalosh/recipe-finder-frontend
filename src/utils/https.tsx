@@ -61,8 +61,7 @@ export async function fetchRecipes({ searchTerm, page, mode, signal }: RecipesSe
         { signal: signal , headers: authHeaders });
 
     if (!response.ok) {
-        const error = new Error("Failed to fetch recipes.");
-        throw error;
+        throw new Error("Failed to fetch recipes.");
     }
 
     const { recipes, pagination} = await response.json();
