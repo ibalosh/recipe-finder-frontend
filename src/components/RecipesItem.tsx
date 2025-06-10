@@ -1,6 +1,6 @@
 import pluralize from 'pluralize';
 
-import "./RecipeItem.css";
+import "./Recipes.css";
 import {useState} from "react";
 import StarRating from "./StarRating.tsx";
 import {useNavigate} from "react-router-dom";
@@ -12,7 +12,7 @@ type Props = {
     searchTerm: string
 }
 
-export default function RecipeItem({recipe, searchTerm}: Props){
+export default function RecipesItem({recipe, searchTerm}: Props){
     const [loaded, setLoaded] = useState(false);
     const navigate = useNavigate();
 
