@@ -1,4 +1,4 @@
-.mainHeader {
+.main {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,18 +12,18 @@
     z-index: 100;
 }
 
-.headerLogo {
+.logo {
     border: none;
     background-color: transparent;
 }
 
-.headerTitle {
+.title {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-.headerTitle h1 {
+.title h1 {
     font-family: 'Lobster Two', 'Segoe UI', 'Helvetica Neue', sans-serif;
     font-size: 2rem;
     font-weight: 700;
@@ -33,7 +33,7 @@
     transition: color 0.1s ease-in-out;
 }
 
-.headerTitle h1:hover {
+.title h1:hover {
     color: #ba6832;
     text-shadow: 0 1px 1px rgb(241, 210, 151);
 }
@@ -113,11 +113,11 @@
 
 
 @media (min-width: 900px) {
-    .mainHeader {
+    .main {
         flex-direction: row;
     }
 
-    .headerTitle h1 {
+    .title h1 {
         font-size: 2.5rem;
         margin: 0;
     }

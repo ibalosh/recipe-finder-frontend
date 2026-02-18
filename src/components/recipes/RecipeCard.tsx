@@ -1,6 +1,6 @@
 import {Recipe, Recipes} from "../../utils/https.ts";
 import RecipesList from "./RecipesList.tsx";
-import "./Recipes.css"
+import styles from "./RecipesGrid.module.css";
 
 type Props = {
     data: Recipes | undefined;
@@ -9,7 +9,7 @@ type Props = {
 
 export default function RecipeCard({data, searchTerm}: Props) {
     return (
-        <ul id="recipes">
+        <ul className={styles.recipes}>
             {data!.recipes.map((recipe: Recipe, index: number) => (
                 <RecipesList key={index} recipe={recipe} searchTerm={searchTerm}/>
             ))}

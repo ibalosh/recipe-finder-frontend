@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState, KeyboardEvent} from "react";
 import {useNavigate} from "react-router-dom";
 import styles from "./Header.module.css";
 
@@ -18,7 +18,7 @@ export default function Header() {
     }
 
     // clicking enter while on page will auto initiate a search
-    function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
+    function handleKeyDown(event: KeyboardEvent<HTMLInputElement>) {
         if (event.key === "Enter") {
             submitSearch();
         }
@@ -27,8 +27,8 @@ export default function Header() {
     const placeholderValue = (searchMode === "ingredients") ? "Search for recipes by ingredients..." : "Search for recipes by title..."
 
     return (
-        <header className={styles.mainHeader}>
-            <button onClick={resetSearch} className={`${styles.headerLogo} ${styles.headerTitle}`}>
+        <header className={styles.main}>
+            <button onClick={resetSearch} className={`${styles.logo} ${styles.title}`}>
                 <h1>Recipe Finder</h1>
             </button>
             <div className={styles.searchToggle}>

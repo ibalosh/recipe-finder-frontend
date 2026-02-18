@@ -1,33 +1,33 @@
 import StarRating from "../ui/StarRating.tsx";
 import {Recipe} from "../../utils/https.ts";
-import "./RecipeDetails.css"
+import styles from "./RecipeDetails.module.css";
 
 export default function RecipeDetails({recipe}: {recipe: Recipe}) {
     return (
-        <div className="recipe-container">
-            <h1 className="recipe-heading">{recipe.title}</h1>
+        <div className={styles.container}>
+            <h1 className={styles.heading}>{recipe.title}</h1>
 
             {recipe.short_description && (
-                <p className="recipe-description">{recipe.short_description}</p>
+                <p className={styles.description}>{recipe.short_description}</p>
             )}
 
-            <div className="recipe-meta">
-                <div className="recipe-meta-item">👩‍🍳 {recipe.author?.name || 'Anonymous'}</div>
-                <div className="recipe-meta-item">🍽 {recipe.category?.name || 'Uncategorized'}</div>
-                <div className="recipe-meta-item">🌍 {recipe.cuisine?.name || 'Various'}</div>
+            <div className={styles.meta}>
+                <div className={styles.metaItem}>👩‍🍳 {recipe.author?.name || 'Anonymous'}</div>
+                <div className={styles.metaItem}>🍽 {recipe.category?.name || 'Uncategorized'}</div>
+                <div className={styles.metaItem}>🌍 {recipe.cuisine?.name || 'Various'}</div>
             </div>
 
             {recipe.image_url && (
                 <img
                     src={recipe.image_url}
                     alt={recipe.title}
-                    className="recipe-image"
+                    className={styles.image}
                 />
             )}
 
-            <div className="recipe-section">
-                <h2 className="recipe-section-title">📝 Ingredients</h2>
-                <ul className="recipe-ingredients">
+            <div className={styles.section}>
+                <h2 className={styles.sectionTitle}>📝 Ingredients</h2>
+                <ul className={styles.ingredients}>
                     {recipe.ingredients.map((item, i) => (
                         <li key={i}>{item}</li>
                     ))}
@@ -35,13 +35,13 @@ export default function RecipeDetails({recipe}: {recipe: Recipe}) {
             </div>
 
             {recipe.instructions && (
-                <div className="recipe-section">
-                    <h2 className="recipe-section-title">👨‍🍳 Instructions</h2>
-                    <p className="recipe-instructions">{recipe.instructions}</p>
+                <div className={styles.section}>
+                    <h2 className={styles.sectionTitle}>👨‍🍳 Instructions</h2>
+                    <p className={styles.instructions}>{recipe.instructions}</p>
                 </div>
             )}
 
-            <div className="recipe-footer">
+            <div className={styles.footer}>
                 <span>⏱ Preparation time: {recipe.prep_time} min | Cook time: {recipe.cook_time} min</span>
                 <StarRating rating={recipe.ratings} />
             </div>

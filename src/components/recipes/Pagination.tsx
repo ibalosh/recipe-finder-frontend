@@ -1,4 +1,4 @@
-import "./Pagination.css"
+import styles from "./Pagination.module.css";
 
 export type PaginationProps = {
     currentPage: number;
@@ -20,14 +20,14 @@ export default function Pagination(
     }: PaginationProps) {
 
     return (
-        <div className="pagination">
+        <div className={styles.container}>
             <button onClick={() => setPage(1)} disabled={currentPage === 1}>« First</button>
             <button onClick={() => prevPage && setPage(prevPage)} disabled={!prevPage}>← Prev</button>
 
-            <span className="pagination-info">
+            <span className={styles.info}>
                 Page <strong>{currentPage}</strong> of {totalPages}
-                <span className="dot">•</span>
-                <span className="total-count">{totalCount.toLocaleString()} recipes</span>
+                <span className={styles.dot}>•</span>
+                <span className={styles.count}>{totalCount.toLocaleString()} recipes</span>
             </span>
 
             <button onClick={() => nextPage && setPage(nextPage)} disabled={!nextPage}>Next →</button>

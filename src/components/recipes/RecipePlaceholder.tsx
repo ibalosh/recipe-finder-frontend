@@ -1,17 +1,18 @@
-import './RecipePlaceholder.css';
+import styles from "./RecipePlaceholder.module.css";
+import gridStyles from "./RecipesGrid.module.css";
 
 export default function RecipePlaceholder({ message }: { message: string }) {
     return (
-        <div className="recipe-placeholder-container">
-            {message && <p className="recipe-message">{message}</p>}
-            <ul id="recipes">
+        <div className={styles.container}>
+            {message && <p className={styles.message}>{message}</p>}
+            <ul className={gridStyles.recipes}>
                 {[...Array(16)].map((_, i) => (
-                    <li key={i} className="recipe-placeholder">
-                        <div className="recipe-image-skeleton" />
-                        <div className="recipe-text-skeleton">
-                            <div className="line short" />
-                            <div className="line long" />
-                            <div className="line medium" />
+                    <li key={i} className={styles.item}>
+                        <div className={styles.imageSkeleton} />
+                        <div className={styles.textSkeleton}>
+                            <div className={`${styles.line} ${styles.short}`} />
+                            <div className={`${styles.line} ${styles.long}`} />
+                            <div className={`${styles.line} ${styles.medium}`} />
                         </div>
                     </li>)
                 )}

@@ -2,7 +2,7 @@ import styles from "./Footer.module.css"
 
 export default function Footer() {
     return (
-        <footer className={styles.mainFooter}>
+        <footer className={styles.main}>
             <p>© 2025 Recipe Finder. Made with 🧡 and fresh ingredients.</p>
         </footer>
     )

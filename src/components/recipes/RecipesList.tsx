@@ -1,11 +1,11 @@
 import pluralize from 'pluralize';
 
-import "./Recipes.css";
 import {useState} from "react";
 import StarRating from "../ui/StarRating.tsx";
 import {useNavigate} from "react-router-dom";
 import {Recipe} from "../../utils/https.ts";
 import * as React from "react";
+import styles from "./RecipesList.module.css";
 
 type Props = {
     recipe: Recipe,
@@ -55,9 +55,9 @@ export default function RecipesList({recipe, searchTerm}: Props){
     }
 
     return (
-        <li className="recipe-item" onClick={visitRecipePage}>
+        <li className={styles.item} onClick={visitRecipePage}>
             <article>
-                <div className={`image-wrapper ${loaded ? 'loaded' : 'loading'}`}>
+                <div className={`${styles.imageWrapper} ${loaded ? styles.loaded : ""}`}>
                     <img
                         src={recipe.image_url}
                         alt={recipe.title}
@@ -65,23 +65,23 @@ export default function RecipesList({recipe, searchTerm}: Props){
                     />
                 </div>
 
-                <div className="recipe-item-details">
-                    <h3 className="recipe-item-title">{limitTextByLength(recipe.title,30) }</h3>
-                    <div className="recipe-meta">
-                        <div className="recipe-ingredients-text">
+                <div className={styles.itemDetails}>
+                    <h3 className={styles.itemTitle}>{limitTextByLength(recipe.title,30) }</h3>
+                    <div className={styles.meta}>
+                        <div className={styles.ingredientsText}>
                             {highlightTerms(
                                 limitTextByLength(recipe.ingredients.join(", "),
                                     50
                                 ), searchTerm
                             )}
                         </div>
-                        <span className="recipe-tag category">🍽 {recipe.category?.name}</span>
-                        <span className="recipe-tag author">
+                        <span className={`${styles.tag} ${styles.tagCategory}`}>🍽 {recipe.category?.name}</span>
+                        <span className={`${styles.tag} ${styles.tagAuthor}`}>
                         { recipe.author ? `👩‍🍳 ${recipe.author.name}` : `👤 Deleted user`}
                     </span>
                     </div>
 
-                    <div className="recipe-item-rating"><StarRating rating={recipe.ratings} /></div>
+                    <div className={styles.itemRating}><StarRating rating={recipe.ratings} /></div>
                 </div>
             </article>
         </li>
