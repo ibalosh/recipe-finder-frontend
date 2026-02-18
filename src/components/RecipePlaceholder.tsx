@@ -1,6 +1,6 @@
 import './RecipePlaceholder.css';
 
-export default function RecipePlaceholder({ message }: { message?: string }) {
+export default function RecipePlaceholder({ message }: { message: string }) {
     return (
         <div className="recipe-placeholder-container">
             {message && <p className="recipe-message">{message}</p>}

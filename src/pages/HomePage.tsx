@@ -6,16 +6,15 @@ import {useEffect, useState} from "react";
 
 import {fetchRecipes} from "../utils/https.ts";
 
-import Pagination from "../components/Pagination.tsx";
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
 import RecipesItems from "../components/RecipesItems.tsx";
+import Pagination from "../components/Pagination.tsx";
 
 export default function HomePage() {
     const [searchParams] = useSearchParams();
     const searchTerm = searchParams.get("search") || "";
     const mode = searchParams.get("mode") || "";
     const [page, setPage] = useState(1);
-
     const { data, isLoading, isError, error} = useQuery({
         queryKey: ['recipes', searchTerm, mode, page],
         queryFn: ({ signal }) => fetchRecipes(
@@ -23,8 +22,16 @@ export default function HomePage() {
         ),
     });
 
-    const hasPagination = data && data.pagination && data.pagination.total_count > 0
+    const hasPagination = data && data?.pagination && data?.pagination.total_count > 0
     const hasRecipesToShow = !isLoading && (data?.recipes?.length ?? 0) > 0
+    const placeholderMessage =
+        isError
+            ? (error instanceof Error ? error.message : "Failed to fetch recipes.")
+            : isLoading
+                ? "Loading ..."
+                : !hasRecipesToShow
+                    ? "No recipes found ..."
+                    : null;
 
     // page should reset to first one, when visiting home page from another page
     // like when clicking recipe finder logo
@@ -34,24 +41,21 @@ export default function HomePage() {
     }, [searchParams]);
 
     return (
-    <>
-        <section>
-            {isError && <RecipePlaceholder message={error.message} />}
-            {isLoading && <RecipePlaceholder message="Loading ..." />}
-            {!isLoading && !isError && !hasRecipesToShow && (
-                <RecipePlaceholder message="No recipes found ..." />
-            )}
-            {hasRecipesToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
-        </section>
+        <>
+            <section>
+                {placeholderMessage && <RecipePlaceholder message={placeholderMessage} />}
+                {hasRecipesToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
+            </section>
 
-        {hasPagination && <Pagination
-            currentPage={data?.pagination.current_page}
-            totalPages={data?.pagination.total_pages}
-            totalCount={data?.pagination.total_count}
-            nextPage={data?.pagination.next_page}
-            prevPage={data?.pagination.prev_page}
-            setPage={setPage}
-        />}
-    </>
+            {hasPagination && <Pagination
+                currentPage={data.pagination.current_page}
+                totalPages={data.pagination.total_pages}
+                totalCount={data.pagination.total_count}
+                nextPage={data.pagination.next_page}
+                prevPage={data.pagination.prev_page}
+                setPage={setPage}
+            />}
+        </>
+
     )
 }
