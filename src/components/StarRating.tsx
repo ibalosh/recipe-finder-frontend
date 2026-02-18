@@ -1,23 +1,21 @@
 import styles from "./StarRating.module.css";
+import {getStarFillStates, StarFill} from "../utils";
 
 const StarRating = ({ rating }: { rating: number }) => {
-    const totalStars = 5;
-    const rounded = Math.round(rating * 2) / 2; // e.g. 3.89 → 4.0, 3.25 → 3.5
-    const fullStars = Math.floor(rounded); // number of full stars
-    const hasHalfStar = rounded % 1 !== 0;  // true if there's a half star
+    const stars = getStarFillStates(rating, 5);
 
     return (
         <div>
-            {[...Array(totalStars)].map((_, i) => {
-                if (i < fullStars) {
-                    return <span key={i} className={styles.star}>★</span>;
-                } else if (i === fullStars && hasHalfStar) {
-                    return <span key={i} className={`${styles.star} ${styles.half}`}>★</span>;
+            {stars.map((item, index) => {
+                if (item === StarFill.FULL) {
+                    return <span key={index} className={styles.star}>★</span>;
+                } else if (item === StarFill.HALF) {
+                    return <span key={index} className={`${styles.star} ${styles.half}`}>★</span>;
                 } else {
-                    return <span key={i}>☆</span>;
+                    return <span key={index}>☆</span>;
                 }
             })}
-            <span className={styles.starRating}>{rating}</span>
+            <span>{rating}</span>
         </div>
     );
 };

@@ -4,7 +4,7 @@ import "./Recipes.css";
 import {useState} from "react";
 import StarRating from "./StarRating.tsx";
 import {useNavigate} from "react-router-dom";
-import {Recipe} from "../utils/https.tsx";
+import {Recipe} from "../utils/https.ts";
 import * as React from "react";
 
 type Props = {

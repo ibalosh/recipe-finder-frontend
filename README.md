@@ -1,4 +1,5 @@
 # 🥘 Recipe Finder — Frontend
+[![CI](https://github.com/ibalosh/recipe-finder-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/ibalosh/recipe-finder-frontend/actions/workflows/ci.yml)
 
 Task on hand: It's dinner time! Create an application that helps users find the most relevant recipes that they can prepare with the ingredients that they have at home
 
@@ -6,7 +7,7 @@ Task on hand: It's dinner time! Create an application that helps users find the 
 
 A lightweight React frontend for the Recipe Finder API, allowing users to search for recipes based on the ingredients they have at home.
 
-🌐 **Live Demo**: [recipe-time-frontend.onrender.com](https://recipe-time-frontend.onrender.com)
+🌐 **Live frontend demo**: [recipe-finder](https://recipe-finder.playground.ibalosh.com/)
 
 💻 **Backend repo**: [github.com/ibalosh/recipe_finder_backend](https://github.com/ibalosh/recipe_finder_backend)
 
@@ -54,4 +55,3 @@ VITE_API_BASE_URL=http://example.com
 VITE_API_TOKEN=token
 ```
 You can see an example in `.env.example` file.
-
