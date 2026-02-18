@@ -3,7 +3,7 @@ import '../App.css'
 import {useParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 
-import {fetchRecipe} from "../utils/https.tsx";
+import {fetchRecipe} from "../utils/https.ts";
 
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
 import RecipeDetails from "../components/RecipeDetails.tsx";

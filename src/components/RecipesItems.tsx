@@ -1,4 +1,4 @@
-import {Recipe, Recipes} from "../utils/https.tsx";
+import {Recipe, Recipes} from "../utils/https.ts";
 import RecipesItem from "./RecipesItem.tsx";
 import "./Recipes.css"
 

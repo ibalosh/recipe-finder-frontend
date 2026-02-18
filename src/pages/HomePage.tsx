@@ -4,7 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {useEffect, useState} from "react";
 
-import {fetchRecipes} from "../utils/https.tsx";
+import {fetchRecipes} from "../utils/https.ts";
 
 import Pagination from "../components/Pagination.tsx";
 import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
@@ -24,8 +24,7 @@ export default function HomePage() {
     });
 
     const hasPagination = data && data.pagination && data.pagination.total_count > 0
-    const noDataToShow = !isLoading && data?.recipes?.length === 0
-    const hasDataToShow = !isLoading && (data?.recipes?.length ?? 0) > 0
+    const hasRecipesToShow = !isLoading && (data?.recipes?.length ?? 0) > 0
 
     // page should reset to first one, when visiting home page from another page
     // like when clicking recipe finder logo
@@ -39,8 +38,8 @@ export default function HomePage() {
         <section>
             {isError && <RecipePlaceholder message={error.message} />}
             {isLoading && <RecipePlaceholder message="Loading ..." />}
-            {noDataToShow && <RecipePlaceholder message="No recipes found ..." />}
-            {hasDataToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
+            {!hasRecipesToShow && <RecipePlaceholder message="No recipes found ..." />}
+            {hasRecipesToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
         </section>
 
         {hasPagination && <Pagination
