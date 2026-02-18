@@ -6,9 +6,9 @@ import {useEffect, useState} from "react";
 
 import {fetchRecipes} from "../utils/https.ts";
 
-import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
-import RecipesItems from "../components/RecipesItems.tsx";
-import Pagination from "../components/Pagination.tsx";
+import RecipePlaceholder from "../components/recipes/RecipePlaceholder.tsx";
+import RecipeCard from "../components/recipes/RecipeCard.tsx";
+import Pagination from "../components/recipes/Pagination.tsx";
 
 export default function HomePage() {
     const [searchParams] = useSearchParams();
@@ -44,7 +44,7 @@ export default function HomePage() {
         <>
             <section>
                 {placeholderMessage && <RecipePlaceholder message={placeholderMessage} />}
-                {hasRecipesToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
+                {hasRecipesToShow && <RecipeCard data={data} searchTerm={searchTerm}/>}
             </section>
 
             {hasPagination && <Pagination

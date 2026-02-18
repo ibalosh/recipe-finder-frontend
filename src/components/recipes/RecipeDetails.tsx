@@ -1,6 +1,6 @@
-import StarRating from "./StarRating.tsx";
-import {Recipe} from "../utils/https.ts";
-import "../components/RecipeDetails.css"
+import StarRating from "../ui/StarRating.tsx";
+import {Recipe} from "../../utils/https.ts";
+import "./RecipeDetails.css"
 
 export default function RecipeDetails({recipe}: {recipe: Recipe}) {
     return (

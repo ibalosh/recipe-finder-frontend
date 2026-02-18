@@ -2,9 +2,9 @@ import pluralize from 'pluralize';
 
 import "./Recipes.css";
 import {useState} from "react";
-import StarRating from "./StarRating.tsx";
+import StarRating from "../ui/StarRating.tsx";
 import {useNavigate} from "react-router-dom";
-import {Recipe} from "../utils/https.ts";
+import {Recipe} from "../../utils/https.ts";
 import * as React from "react";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
     searchTerm: string
 }
 
-export default function RecipesItem({recipe, searchTerm}: Props){
+export default function RecipesList({recipe, searchTerm}: Props){
     const [loaded, setLoaded] = useState(false);
     const navigate = useNavigate();
 

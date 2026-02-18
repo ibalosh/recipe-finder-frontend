@@ -5,8 +5,8 @@ import {useQuery} from "@tanstack/react-query";
 
 import {fetchRecipe} from "../utils/https.ts";
 
-import RecipePlaceholder from "../components/RecipePlaceholder.tsx";
-import RecipeDetails from "../components/RecipeDetails.tsx";
+import RecipePlaceholder from "../components/recipes/RecipePlaceholder.tsx";
+import RecipeDetails from "../components/recipes/RecipeDetails.tsx";
 
 export default function RecipePage() {
     const params = useParams();

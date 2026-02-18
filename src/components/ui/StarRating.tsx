@@ -1,5 +1,5 @@
 import styles from "./StarRating.module.css";
-import {getStarFillStates, StarFill} from "../utils";
+import {getStarFillStates, StarFill} from "../../utils";
 
 const StarRating = ({ rating }: { rating: number }) => {
     const stars = getStarFillStates(rating, 5);

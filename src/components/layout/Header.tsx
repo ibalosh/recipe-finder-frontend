@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import "./Header.css"
+import styles from "./Header.module.css";
 
 export default function Header() {
     const [searchFieldValue, setSearchFieldValue] = useState("")
@@ -27,11 +27,11 @@ export default function Header() {
     const placeholderValue = (searchMode === "ingredients") ? "Search for recipes by ingredients..." : "Search for recipes by title..."
 
     return (
-        <header id="main-header">
-            <button id="header-title" onClick={resetSearch} className="logo">
+        <header className={styles.mainHeader}>
+            <button onClick={resetSearch} className={`${styles.headerLogo} ${styles.headerTitle}`}>
                 <h1>Recipe Finder</h1>
             </button>
-            <div className="search-toggle">
+            <div className={styles.searchToggle}>
                 <label>
                     <input
                         type="radio"
@@ -51,15 +51,16 @@ export default function Header() {
                     Title
                 </label>
             </div>
-            <nav>
+            <nav className={styles.searchNav}>
                 <input
                     type="text"
                     value={searchFieldValue}
                     placeholder={placeholderValue}
                     onChange={(event) => setSearchFieldValue(event.target.value)}
                     onKeyDown={handleKeyDown}
+                    className={styles.searchInput}
                 />
-                <button onClick={submitSearch}>Search</button>
+                <button onClick={submitSearch} className={styles.searchButton}>Search</button>
             </nav>
         </header>
     )

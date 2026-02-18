@@ -1,9 +1,4 @@
-.logo {
-    border: none;
-    background-color: transparent;
-}
-
-#main-header {
+.mainHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,19 +6,24 @@
     padding: 1.5rem 2rem;
     background-color: #fffdf5;
     border-bottom: 4px solid #d4c79d;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 6px rgba(0, 0, 10, 0.2);
     position: sticky;
     top: 0;
     z-index: 100;
 }
 
-#header-title {
+.headerLogo {
+    border: none;
+    background-color: transparent;
+}
+
+.headerTitle {
     display: flex;
     align-items: center;
     cursor: pointer;
 }
 
-#header-title h1 {
+.headerTitle h1 {
     font-family: 'Lobster Two', 'Segoe UI', 'Helvetica Neue', sans-serif;
     font-size: 2rem;
     font-weight: 700;
@@ -33,12 +33,12 @@
     transition: color 0.1s ease-in-out;
 }
 
-#header-title h1:hover {
+.headerTitle h1:hover {
     color: #ba6832;
     text-shadow: 0 1px 1px rgb(241, 210, 151);
 }
 
-nav {
+.searchNav {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +46,7 @@ nav {
     width: 100%;
 }
 
-nav input {
+.searchInput {
     padding: 0.7rem 1rem;
     font-size: 0.8rem;
     border: 1px solid #ccc;
@@ -56,7 +56,7 @@ nav input {
     flex: 1;
 }
 
-nav button {
+.searchButton {
     padding: 0.7rem 1rem;
     font-size: 0.8rem;
     background-color: #baa372;
@@ -70,12 +70,11 @@ nav button {
     justify-content: center;
 }
 
-nav button:hover {
+.searchButton:hover {
     background-color: #938f65;
 }
 
-
-.search-toggle {
+.searchToggle {
     display: flex;
     gap: 0.5rem;
     margin-left: 2rem;
@@ -84,7 +83,7 @@ nav button:hover {
     margin-right: 1rem;
 }
 
-.search-toggle label {
+.searchToggle label {
     background-color: #f9e9d2;
     border: 1px solid #ecc792;
     border-radius: 999px;
@@ -99,39 +98,39 @@ nav button:hover {
     transition: background-color 0.2s ease-in-out;
 }
 
-.search-toggle input[type="radio"] {
+.searchToggle input[type="radio"] {
     accent-color: #d4783a;
     margin: 0;
 }
 
-.search-toggle label:has(input[type="radio"]:checked) {
+.searchToggle label:has(input[type="radio"]:checked) {
     background-color: #f3cfa5;
 }
 
-.search-toggle label:hover {
+.searchToggle label:hover {
     background-color: #f1d6b9;
 }
 
 
 @media (min-width: 900px) {
-    #main-header {
+    .mainHeader {
         flex-direction: row;
     }
 
-    #header-title h1 {
+    .headerTitle h1 {
         font-size: 2.5rem;
         margin: 0;
     }
 
-    nav input {
+    .searchInput {
         font-size: 1.2rem;
     }
 
-    nav button {
+    .searchButton {
         font-size: 1.2rem;
     }
 
-    .search-toggle {
+    .searchToggle {
         margin-bottom: 0;
     }
 }
