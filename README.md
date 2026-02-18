@@ -44,8 +44,8 @@ A lightweight React frontend for the Recipe Finder API, allowing users to search
 To run locally:
 
 ```bash
-npm install
-npm dev
+yarn install
+yarn dev
 ```
 
 Ensure your `.env` file contains the API URL and token.

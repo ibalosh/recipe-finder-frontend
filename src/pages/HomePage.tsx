@@ -38,7 +38,9 @@ export default function HomePage() {
         <section>
             {isError && <RecipePlaceholder message={error.message} />}
             {isLoading && <RecipePlaceholder message="Loading ..." />}
-            {!hasRecipesToShow && <RecipePlaceholder message="No recipes found ..." />}
+            {!isLoading && !isError && !hasRecipesToShow && (
+                <RecipePlaceholder message="No recipes found ..." />
+            )}
             {hasRecipesToShow && <RecipesItems data={data} searchTerm={searchTerm}/>}
         </section>
 
@@ -51,5 +53,5 @@ export default function HomePage() {
             setPage={setPage}
         />}
     </>
-  )
+    )
 }
