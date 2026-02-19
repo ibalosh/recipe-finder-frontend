@@ -1,6 +1,10 @@
 import {QueryClient} from "@tanstack/react-query";
 
 export const queryClient = new QueryClient();
+export const API_ENDPOINTS = {
+    recipes: "/recipes",
+    recipeById: (id: string) => `/recipes/${id}`,
+} as const;
 
 type RecipesSearchProps = {
     searchTerm: string,
@@ -53,7 +57,7 @@ const apiUrl = import.meta.env.VITE_API_BASE_URL;
 const authHeaders = { "X-API-Token": import.meta.env.VITE_API_TOKEN }
 
 export async function fetchRecipes({ searchTerm, page, mode, signal }: RecipesSearchProps): Promise<Recipes> {
-    let url = `${apiUrl}/recipes`;
+    let url = `${apiUrl}${API_ENDPOINTS.recipes}`;
     url += '?search=' + searchTerm;
     url += '&mode=' + mode
 
@@ -69,7 +73,7 @@ export async function fetchRecipes({ searchTerm, page, mode, signal }: RecipesSe
 }
 
 export async function fetchRecipe({id, signal }: RecipeSearchProps): Promise<Recipe> {
-    const url = `${apiUrl}/recipes/${id}`;
+    const url = `${apiUrl}${API_ENDPOINTS.recipeById(id)}`;
 
     const response = await fetch(url, { signal: signal, headers: authHeaders});
     if (!response.ok) {
