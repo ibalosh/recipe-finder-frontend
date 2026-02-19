@@ -1,17 +1,17 @@
-.recipe-placeholder-container {
+.container {
     position: relative;
     opacity: 0.8;
     pointer-events: none;
 }
 
-.recipe-message {
+.message {
     position: absolute;
     top: 5rem;
     left: 50%;
     transform: translateX(-50%);
     font-size: 5rem;
     font-weight: 600;
-    font-family: 'Bree Serif', sans-serif;
+    font-family: "Bree Serif", sans-serif;
     color: #ff6b6b;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
     letter-spacing: 0.2rem;
@@ -20,7 +20,7 @@
     z-index: 10;
 }
 
-.recipe-placeholder {
+.item {
     display: flex;
     gap: 1rem;
     padding: 1rem;
@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-.recipe-image-skeleton {
+.imageSkeleton {
     width: 100px;
     height: 100px;
     background: #eee;
@@ -39,7 +39,7 @@
     flex-shrink: 0;
 }
 
-.recipe-text-skeleton {
+.textSkeleton {
     flex: 1;
 }
 
@@ -51,19 +51,25 @@
     animation: pulse 1.4s ease-in-out infinite;
 }
 
-.line.short {
+.short {
     width: 30%;
 }
 
-.line.medium {
+.medium {
     width: 50%;
 }
 
-.line.long {
+.long {
     width: 80%;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
