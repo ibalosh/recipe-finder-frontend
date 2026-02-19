@@ -4,11 +4,11 @@ import {useSearchParams} from "react-router-dom";
 import {useQuery} from "@tanstack/react-query";
 import {useEffect, useState} from "react";
 
-import {fetchRecipes} from "../utils/https.ts";
+import {fetchRecipes} from "@/utils/https.ts";
 
-import RecipePlaceholder from "../components/recipes/RecipePlaceholder.tsx";
-import RecipeCard from "../components/recipes/RecipeCard.tsx";
-import Pagination from "../components/recipes/Pagination.tsx";
+import RecipePlaceholder from "@/components/recipes/RecipePlaceholder.tsx";
+import RecipeCard from "@/components/recipes/RecipeCard.tsx";
+import Pagination from "@/components/recipes/Pagination.tsx";
 
 export default function HomePage() {
     const [searchParams] = useSearchParams();

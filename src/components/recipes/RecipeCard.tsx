@@ -1,4 +1,4 @@
-import {Recipe, Recipes} from "../../utils/https.ts";
+import {Recipe, Recipes} from "@/utils/https.ts";
 import RecipesList from "./RecipesList.tsx";
 import styles from "./RecipesGrid.module.css";
 

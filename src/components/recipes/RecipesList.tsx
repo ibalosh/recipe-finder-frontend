@@ -1,9 +1,9 @@
 import pluralize from 'pluralize';
 
 import {useState} from "react";
-import StarRating from "../ui/StarRating.tsx";
+import StarRating from "@/components/ui/StarRating.tsx";
 import {useNavigate} from "react-router-dom";
-import {Recipe} from "../../utils/https.ts";
+import {Recipe} from "@/utils/https.ts";
 import * as React from "react";
 import styles from "./RecipesList.module.css";
 

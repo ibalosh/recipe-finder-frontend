@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { getStarFillStates, StarFill } from "../../src/utils";
+import { getStarFillStates, StarFill } from "@/utils";
 
 describe("getStarFillStates", () => {
   it("creates exactly maxRating stars", () => {
